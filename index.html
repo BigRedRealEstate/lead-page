@@ -398,9 +398,98 @@ footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10
   .band{padding:52px 0}
 }
 
+
+/* ============================================================
+   FULL-BLEED FEATURE BANDS — image-free: oversized outlined
+   numerals on a tinted panel, alternating sides down the page.
+   Drop a photo in later by adding background-image to
+   .feature-panel; nothing else needs to change.
+   ============================================================ */
+.feature{border-top:1px solid var(--line-soft); overflow:hidden}
+.feature-inner{display:grid}
+@media (min-width:900px){
+  .feature-inner{grid-template-columns:.92fr 1.08fr; min-height:60vh; align-items:center}
+  .feature.flip .feature-panel{order:2}
+}
+.feature-panel{
+  position:relative; min-height:210px;
+  display:flex; flex-direction:column; justify-content:space-between;
+  padding:clamp(26px,3.4vw,46px);
+  background:
+    radial-gradient(120% 105% at 18% 0%, var(--accent-glow), transparent 62%),
+    var(--surface-2);
+  border-bottom:1px solid var(--line-soft);
+}
+@media (max-width:899px){
+  /* on phones the panel becomes a compact divider strip rather than
+     a tall empty block: numeral and tag sit on one line */
+  .feature-panel{
+    flex-direction:row; align-items:flex-end; justify-content:space-between;
+    gap:18px; min-height:0; padding-top:24px; padding-bottom:22px;
+  }
+  .feature-num{font-size:clamp(60px,17vw,86px)}
+  .feature-tag{margin-top:0; padding-top:0; padding-bottom:6px; text-align:right}
+}
+@media (min-width:900px){
+  .feature-panel{min-height:60vh; border-bottom:0}
+  .feature:not(.flip) .feature-panel{border-right:1px solid var(--line-soft)}
+  .feature.flip .feature-panel{border-left:1px solid var(--line-soft)}
+}
+.feature-num{
+  font-size:clamp(86px,12.5vw,180px); line-height:.8; font-weight:700;
+  letter-spacing:-.055em; color:transparent;
+  -webkit-text-stroke:1.5px var(--accent); opacity:.6;
+}
+.feature-tag{
+  margin-top:auto; padding-top:26px;
+  font-size:11.5px; font-weight:700; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--accent-txt);
+}
+.feature-copy{padding:clamp(40px,6vw,72px) 20px; max-width:660px; margin:0 auto}
+@media (min-width:900px){
+  .feature-copy{padding:clamp(48px,5vw,88px) clamp(40px,5vw,78px); margin:0}
+}
+.feature-copy h2{font-size:clamp(1.7rem,4vw,2.6rem); margin:14px 0 0; max-width:18ch}
+.feature-copy h2 em{font-style:normal; color:var(--sand)}
+.feature-copy p{margin-top:18px; color:var(--muted); font-size:clamp(1rem,2vw,1.07rem); max-width:52ch}
+.feature-copy p + p{margin-top:14px}
+.feature-copy .btn{margin-top:28px}
+
+/* ---- stat band ---- */
+.stats{border-top:1px solid var(--line-soft); background:var(--surface); padding:clamp(50px,7vw,86px) 0}
+.stats-grid{display:grid; gap:36px; text-align:center}
+@media (min-width:760px){ .stats-grid{grid-template-columns:repeat(3,1fr)} }
+.stat b{
+  display:block; font-size:clamp(2.4rem,5.6vw,3.3rem); font-weight:700;
+  letter-spacing:-.045em; line-height:1; color:var(--accent-txt);
+}
+.stat.word b{font-size:clamp(1.7rem,3.6vw,2.2rem)}
+.stat span{
+  display:block; margin-top:12px; font-size:11.5px; font-weight:700;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--muted-2);
+}
+.stat i{display:block; margin-top:8px; font-style:normal; font-size:14px; color:var(--muted)}
+
+/* ---- closing contact band ---- */
+.closing{
+  border-top:1px solid var(--line-soft); text-align:center;
+  padding:clamp(58px,8vw,106px) 0;
+  background:radial-gradient(70% 95% at 50% 0%, var(--accent-glow), transparent 68%);
+}
+.closing h2{font-size:clamp(1.8rem,4.8vw,2.9rem); max-width:17ch; margin:14px auto 0}
+.closing h2 em{font-style:normal; color:var(--sand)}
+.closing > .wrap > p{margin:18px auto 0; max-width:48ch; color:var(--muted)}
+.closing .contact-grid{margin-top:40px; text-align:left}
+
+/* ---- scroll reveal ---- */
+.reveal{opacity:0; transform:translateY(24px);
+  transition:opacity .75s ease, transform .75s cubic-bezier(.22,.8,.3,1)}
+.reveal.in{opacity:1; transform:none}
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *{transition:none !important}
+  .reveal{opacity:1 !important; transform:none !important}
 }
 </style>
 </head>
@@ -471,54 +560,119 @@ footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10
   </div>
 </section>
 
-<!-- ══════════════ WHY ══════════════ -->
-<section id="why" class="band">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Why Caleb</span>
-      <h2>Fewer surprises, better outcomes.</h2>
-      <p>Real estate gets stressful when you're guessing. My job is to take the guessing out of it — with real numbers, honest timelines, and a plan you actually understand.</p>
+<!-- ══════════════ WHY — alternating full-bleed bands ══════════════ -->
+<section id="why" class="feature">
+  <div class="feature-inner">
+    <div class="feature-panel">
+      <span class="feature-num">01</span>
+      <span class="feature-tag">Local, not generic</span>
     </div>
-    <div class="grid grid-3">
-      <div class="card">
-        <h3>Local, not generic</h3>
-        <p>Salt Lake and Utah County move differently — sometimes street to street. You get pricing and strategy built on what's actually happening in your area right now.</p>
+    <div class="feature-copy reveal">
+      <span class="eyebrow">Why Caleb</span>
+      <h2>Two counties that <em>don't move the same.</em></h2>
+      <p>Salt Lake and Utah County behave like different markets, and inside each one it can change street to street. What sells in eleven days in Sugar House can sit for two months in Eagle Mountain at the same price per foot.</p>
+      <p>You get pricing and strategy built on what's happening in your area right now — not a statewide average that describes nobody's house.</p>
+    </div>
+  </div>
+</section>
+
+<section class="feature flip">
+  <div class="feature-inner">
+    <div class="feature-panel">
+      <span class="feature-num">02</span>
+      <span class="feature-tag">Numbers up front</span>
+    </div>
+    <div class="feature-copy reveal">
+      <span class="eyebrow">What you get</span>
+      <h2>See the math <em>before</em> you commit.</h2>
+      <p>Net sheets, carrying costs, and realistic offer ranges come before any decision, not after it. You'll know what a move costs you and what it actually puts back in your pocket.</p>
+      <p>If the numbers say wait, I'll show you the numbers that say wait.</p>
+    </div>
+  </div>
+</section>
+
+<section class="feature">
+  <div class="feature-inner">
+    <div class="feature-panel">
+      <span class="feature-num">03</span>
+      <span class="feature-tag">Responsive, always</span>
+    </div>
+    <div class="feature-copy reveal">
+      <span class="eyebrow">How I work</span>
+      <h2>Deals die in <em>slow replies.</em></h2>
+      <p>An offer window can close in an afternoon. Call, text, or email — you hear back the same day, and you always know what happens next and who's waiting on whom.</p>
+      <a class="btn btn-primary" href="#start">Start your plan</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ STATS ══════════════
+     These are service commitments, not production numbers.
+     Swap in your real stats when you want them here — e.g.
+     homes closed, years licensed, average days on market.
+     ══════════════════════════════════════ -->
+<section class="stats">
+  <div class="wrap">
+    <div class="stats-grid reveal">
+      <div class="stat">
+        <b>2</b>
+        <span>Counties covered</span>
+        <i>Salt Lake &amp; Utah County</i>
       </div>
-      <div class="card">
-        <h3>Numbers up front</h3>
-        <p>Net sheets, carrying costs, and realistic offer ranges before you commit to anything. You'll know what a move costs and what it nets you.</p>
+      <div class="stat word">
+        <b>Same day</b>
+        <span>Typical reply</span>
+        <i>Call, text, or email</i>
       </div>
-      <div class="card">
-        <h3>Responsive, always</h3>
-        <p>Deals get lost in slow replies. Call, text, or email — you'll hear back the same day, and you'll always know what's next.</p>
+      <div class="stat">
+        <b>0</b>
+        <span>Pressure</span>
+        <i>Straight answers, every time</i>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════ HOW ══════════════ -->
-<section id="how" class="band">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">How It Works</span>
-      <h2>Three steps. No pressure at any of them.</h2>
+<!-- ══════════════ HOW — alternating full-bleed bands ══════════════ -->
+<section id="how" class="feature flip">
+  <div class="feature-inner">
+    <div class="feature-panel">
+      <span class="feature-num">01</span>
+      <span class="feature-tag">Step one</span>
     </div>
-    <div class="grid grid-3">
-      <div class="card">
-        <div class="num">1</div>
-        <h3>Tell me the basics</h3>
-        <p>A few taps below — what you're doing, where, and when. That's enough for me to do real homework before we talk.</p>
-      </div>
-      <div class="card">
-        <div class="num">2</div>
-        <h3>Get a custom plan</h3>
-        <p>I'll send back comparable sales, a price range, and the timeline your goal actually requires — not a template.</p>
-      </div>
-      <div class="card">
-        <div class="num">3</div>
-        <h3>Move when you're ready</h3>
-        <p>If the plan works, we run it. If the timing isn't right, I'll tell you that too and check back when it is.</p>
-      </div>
+    <div class="feature-copy reveal">
+      <span class="eyebrow">How it works</span>
+      <h2>Tell me <em>the basics.</em></h2>
+      <p>Three taps below — what you're doing, where, and when. That's genuinely enough for me to do real homework before we ever talk, so the first conversation isn't spent gathering information you already gave me.</p>
+    </div>
+  </div>
+</section>
+
+<section class="feature">
+  <div class="feature-inner">
+    <div class="feature-panel">
+      <span class="feature-num">02</span>
+      <span class="feature-tag">Step two</span>
+    </div>
+    <div class="feature-copy reveal">
+      <span class="eyebrow">How it works</span>
+      <h2>Get a plan built on <em>real comps.</em></h2>
+      <p>Comparable sales from your actual neighborhood, a price range with reasoning attached, and the timeline your goal really requires. Written down, so you can sit with it instead of trying to remember what somebody told you on a call.</p>
+    </div>
+  </div>
+</section>
+
+<section class="feature flip">
+  <div class="feature-inner">
+    <div class="feature-panel">
+      <span class="feature-num">03</span>
+      <span class="feature-tag">Step three</span>
+    </div>
+    <div class="feature-copy reveal">
+      <span class="eyebrow">How it works</span>
+      <h2>Move when <em>you're ready.</em></h2>
+      <p>If the plan works, we run it. If the timing isn't right, I'll say so and check back when it is — no chasing, no drip campaign you have to unsubscribe from.</p>
+      <a class="btn btn-primary" href="#start">Answer the three questions</a>
     </div>
   </div>
 </section>
@@ -689,14 +843,13 @@ footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10
   </div>
 </section>
 
-<!-- ══════════════ CONTACT ══════════════ -->
-<section id="contact" class="band">
+<!-- ══════════════ CONTACT — closing band ══════════════ -->
+<section id="contact" class="closing">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Contact</span>
-      <h2>Reach me directly.</h2>
-    </div>
-    <div class="contact-grid">
+    <span class="eyebrow">Contact</span>
+    <h2>Rather just <em>talk it through?</em></h2>
+    <p>Skip the form entirely. Call or text and you'll get a person, not a queue.</p>
+    <div class="contact-grid reveal">
       <a class="contact-card" href="tel:+18019102955">
         <span class="k">Call</span>
         <span class="v">801-910-2955</span>
@@ -785,6 +938,21 @@ footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10
   window.addEventListener('scroll', spy, {passive:true});
   window.addEventListener('resize', spy);
   spy();
+
+
+  /* ---------- Scroll reveal ---------- */
+  var revealables = document.querySelectorAll('.reveal');
+  if (!window.IntersectionObserver ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    revealables.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -12% 0px', threshold:0.12});
+    revealables.forEach(function(el){ io.observe(el); });
+  }
 
   /* ---------- Form validation + AJAX submit ---------- */
   var form    = document.getElementById('leadForm');
