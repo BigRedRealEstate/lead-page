@@ -2,294 +2,760 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Caleb Rogers | Salt Lake &amp; Utah County Real Estate</title>
+<meta name="description" content="Buying, selling, or investing along the Wasatch Front? Answer three quick questions and Caleb Rogers will reach out with a plan built for your timeline.">
+<meta name="theme-color" content="#14130F">
 
-<!-- ============================================================
-     YOUR PAGE TITLE
-     This shows in the browser tab and in Google results.
-     ============================================================ -->
-<title>Work With Me | Your Name, Realtor</title>
-<meta name="description" content="Tell me a little about what you are looking for and I will be in touch.">
+<!-- Open Graph (optional - update the URL/image once the page is live) -->
+<meta property="og:title" content="Caleb Rogers | Salt Lake &amp; Utah County Real Estate">
+<meta property="og:description" content="Answer three quick questions and get a plan built for your timeline.">
+<meta property="og:type" content="website">
 
 <style>
-/* ==============================================================
-   1. YOUR SETTINGS
-   Change these and the whole page changes.
-   Everything below this block uses these values.
-   ============================================================== */
-:root {
-  --brand:      #2F4F45;   /* main color: headings, buttons */
-  --brand-dark: #22392F;   /* darker version, used on hover */
-  --text:       #23211E;   /* body text */
-  --text-soft:  #6B655C;   /* lighter text, labels, fine print */
-  --bg:         #FDFCF9;   /* page background */
-  --panel:      #F5F2EA;   /* form background */
-  --line:       #E2DDD1;   /* borders */
-
-  --font-heading: Georgia, 'Times New Roman', serif;
-  --font-body:    -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-
-  --radius: 6px;           /* how rounded corners are. 0 for square */
-  --max-width: 620px;      /* how wide the page content gets */
+/* ============================================================
+   PALETTE — warm grays, olive khaki, sand
+   Swap these five values to re-skin the whole page.
+   ============================================================ */
+:root{
+  --bg:        #14130F;   /* warm near-black          */
+  --surface:   #1C1B15;   /* cards                    */
+  --surface-2: #24221A;   /* raised / hover           */
+  --line:      #34312A;   /* hairlines                */
+  --line-soft: #2A2721;
+  --text:      #F3F0E8;   /* warm white               */
+  --muted:     #A9A192;   /* warm gray                */
+  --muted-2:   #7E776B;
+  --accent:      #968D68;   /* olive khaki (primary)    */
+  --accent-deep: #6E6749;   /* deep olive               */
+  --accent-glow: rgba(150,141,104,.18);
+  --sand:      #CEC7A7;   /* light khaki (secondary)  */
+  --radius:    14px;
+  --radius-lg: 22px;
+  --shadow:    0 18px 40px -20px rgba(0,0,0,.8);
+  --font: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+          "Segoe UI Variable Display", "Segoe UI", Roboto, "Helvetica Neue",
+          Arial, sans-serif;
+  /* To use a Google font instead, drop this in the <head>:
+     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+     ...and Inter above will pick it up automatically. */
 }
 
-/* ==============================================================
-   2. STYLING
-   You can ignore this section. Claude can change it for you.
-   ============================================================== */
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font-body);
-  font-size: 17px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:128px; -webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font);
+  font-size:16px;
+  line-height:1.6;
+  letter-spacing:-.011em;
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:env(safe-area-inset-bottom);
 }
-.wrap {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 48px 22px 64px;
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{line-height:1.12; letter-spacing:-.03em; margin:0; font-weight:650}
+p{margin:0}
+
+.wrap{width:100%; max-width:1080px; margin:0 auto; padding:0 20px}
+.eyebrow{
+  font-size:12px; font-weight:650; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--accent);
 }
-.eyebrow {
-  font-size: .72rem;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--text-soft);
-  font-weight: 700;
-  margin: 0 0 10px;
+
+/* ============================================================
+   STICKY HEADER
+   ============================================================ */
+.header{
+  position:sticky; top:0; z-index:60;
+  background:rgba(20,19,15,.82);
+  backdrop-filter:saturate(160%) blur(14px);
+  -webkit-backdrop-filter:saturate(160%) blur(14px);
+  border-bottom:1px solid var(--line-soft);
 }
-h1 {
-  font-family: var(--font-heading);
-  font-size: clamp(1.9rem, 5vw, 2.6rem);
-  line-height: 1.2;
-  font-weight: 500;
-  margin: 0 0 14px;
-  color: var(--brand);
+.header-inner{
+  display:flex; align-items:center; gap:16px;
+  height:66px;
 }
-.sub {
-  font-size: 1.05rem;
-  color: var(--text-soft);
-  margin: 0 0 34px;
-  max-width: 46ch;
+.brand{display:flex; align-items:center; gap:11px; text-decoration:none; margin-right:auto; min-width:0}
+.mark{
+  width:36px; height:36px; flex:none; border-radius:11px;
+  background:linear-gradient(150deg,var(--accent),var(--accent-deep));
+  color:#14130F; font-weight:750; font-size:14px; letter-spacing:-.02em;
+  display:grid; place-items:center;
 }
-form {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 26px 22px;
+.brand-txt{min-width:0}
+.brand-name{font-weight:650; font-size:15px; letter-spacing:-.02em; white-space:nowrap}
+.brand-sub{font-size:11.5px; color:var(--muted-2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  font:inherit; font-weight:600; font-size:15px; letter-spacing:-.01em;
+  padding:13px 22px; border-radius:999px; border:1px solid transparent;
+  text-decoration:none; cursor:pointer; white-space:nowrap;
+  transition:transform .14s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
 }
-label {
-  display: block;
-  font-size: .78rem;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: var(--text-soft);
-  margin: 0 0 6px;
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--accent); color:#131209; box-shadow:0 10px 26px -12px var(--accent)}
+.btn-primary:hover{background:#A79E7A}
+.btn-ghost{background:transparent; color:var(--text); border-color:var(--line)}
+.btn-ghost:hover{background:var(--surface-2); border-color:#433F35}
+.btn-sm{padding:9px 16px; font-size:13.5px}
+.btn-lg{padding:16px 30px; font-size:16.5px}
+.btn-block{width:100%}
+.header .btn{flex:none}
+@media (max-width:640px){ .header .btn-ghost{display:none} }
+
+/* ============================================================
+   STICKY SECTION TABS
+   ============================================================ */
+.tabs{
+  position:sticky; top:66px; z-index:55;
+  background:rgba(20,19,15,.9);
+  backdrop-filter:saturate(160%) blur(14px);
+  -webkit-backdrop-filter:saturate(160%) blur(14px);
+  border-bottom:1px solid var(--line-soft);
 }
-.field { margin-bottom: 18px; }
-input, select, textarea {
-  width: 100%;
-  padding: 11px 13px;
-  font-family: inherit;
-  font-size: 1rem;
-  color: var(--text);
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
+.tabs-scroll{
+  display:flex; gap:6px; overflow-x:auto; scrollbar-width:none;
+  padding:9px 20px; max-width:1080px; margin:0 auto;
 }
-input:focus, select:focus, textarea:focus {
-  outline: 2px solid var(--brand);
-  outline-offset: 1px;
-  border-color: var(--brand);
+.tabs-scroll::-webkit-scrollbar{display:none}
+.tab{
+  flex:none; text-decoration:none; font-size:13.5px; font-weight:550;
+  color:var(--muted); padding:8px 15px; border-radius:999px;
+  border:1px solid transparent; transition:.18s ease;
 }
-textarea { min-height: 88px; resize: vertical; }
-button {
-  width: 100%;
-  padding: 14px 18px;
-  font-family: inherit;
-  font-size: .95rem;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: #fff;
-  background: var(--brand);
-  border: 0;
-  border-radius: var(--radius);
-  cursor: pointer;
+.tab:hover{color:var(--text); background:var(--surface)}
+.tab.active{color:var(--text); background:var(--surface-2); border-color:var(--line)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{position:relative; overflow:hidden; padding:72px 0 64px}
+.hero::before{
+  content:""; position:absolute; inset:-30% -10% auto -10%; height:620px; pointer-events:none;
+  background:
+    radial-gradient(46% 52% at 22% 30%, var(--accent-glow), transparent 70%),
+    radial-gradient(40% 46% at 82% 12%, rgba(150,141,104,.11), transparent 70%);
 }
-button:hover { background: var(--brand-dark); }
-button[disabled] { opacity: .6; cursor: default; }
-.fineprint {
-  font-size: .82rem;
-  color: var(--text-soft);
-  margin: 14px 0 0;
-  text-align: center;
+.hero-inner{position:relative}
+.hero h1{font-size:clamp(2.2rem,6.4vw,3.9rem); margin:16px 0 0; max-width:16ch}
+.hero h1 em{font-style:normal; color:var(--sand)}
+.hero-lede{margin-top:20px; max-width:52ch; font-size:clamp(1rem,2.4vw,1.16rem); color:var(--muted)}
+.hero-cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:32px}
+.hero-note{margin-top:18px; font-size:13.5px; color:var(--muted-2)}
+
+.trust{
+  display:flex; flex-wrap:wrap; gap:10px 28px; margin-top:44px;
+  padding-top:26px; border-top:1px solid var(--line-soft);
 }
-.done {
-  display: none;
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 34px 24px;
-  text-align: center;
+.trust div{display:flex; align-items:center; gap:9px; font-size:13.5px; color:var(--muted)}
+.dot{width:6px; height:6px; border-radius:50%; background:var(--accent); flex:none}
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+section{scroll-margin-top:128px}
+.band{padding:66px 0; border-top:1px solid var(--line-soft)}
+.sec-head{max-width:60ch; margin-bottom:34px}
+.sec-head h2{font-size:clamp(1.6rem,4vw,2.3rem); margin:12px 0 0}
+.sec-head p{margin-top:14px; color:var(--muted)}
+
+.grid{display:grid; gap:16px}
+@media (min-width:760px){ .grid-3{grid-template-columns:repeat(3,1fr)} }
+
+.card{
+  background:var(--surface); border:1px solid var(--line-soft);
+  border-radius:var(--radius-lg); padding:26px;
 }
-.done h2 {
-  font-family: var(--font-heading);
-  color: var(--brand);
-  margin: 0 0 8px;
-  font-weight: 500;
+.card h3{font-size:1.06rem; margin-bottom:9px}
+.card p{color:var(--muted); font-size:14.5px}
+.card .num{
+  display:grid; place-items:center; width:34px; height:34px; margin-bottom:16px;
+  border-radius:10px; background:var(--surface-2); border:1px solid var(--line);
+  color:var(--accent); font-weight:700; font-size:14px;
 }
-.done p { margin: 0; color: var(--text-soft); }
-.err {
-  display: none;
-  color: #8A2B2B;
-  font-size: .88rem;
-  margin: 12px 0 0;
-  text-align: center;
+
+/* ============================================================
+   FORM
+   ============================================================ */
+.form-card{
+  background:linear-gradient(180deg,var(--surface),#191811);
+  border:1px solid var(--line); border-radius:26px;
+  padding:clamp(22px,4vw,38px); box-shadow:var(--shadow);
 }
-footer {
-  margin-top: 40px;
-  padding-top: 22px;
-  border-top: 1px solid var(--line);
-  font-size: .85rem;
-  color: var(--text-soft);
-  text-align: center;
+fieldset{border:0; margin:0 0 26px; padding:0}
+fieldset:last-of-type{margin-bottom:22px}
+legend{padding:0; font-size:15.5px; font-weight:600; margin-bottom:4px}
+.hint{font-size:13px; color:var(--muted-2); margin-bottom:14px}
+.step{
+  display:block; font-size:11px; font-weight:700; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--accent); margin-bottom:7px;
 }
-footer a { color: var(--brand); }
+
+.pills{display:flex; flex-wrap:wrap; gap:10px}
+.pill{position:relative; display:inline-flex}
+.pill input{position:absolute; inset:0; opacity:0; width:100%; height:100%; margin:0; cursor:pointer}
+.pill span{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:12px 18px; border-radius:12px;
+  background:var(--surface-2); border:1px solid var(--line);
+  color:var(--muted); font-size:14.5px; font-weight:550;
+  transition:.16s ease; user-select:none;
+}
+.pill:hover span{color:var(--text); border-color:#453F34}
+.pill input:checked + span{
+  background:var(--accent-glow); border-color:var(--accent);
+  color:var(--text); box-shadow:inset 0 0 0 1px var(--accent);
+}
+.pill input:focus-visible + span{outline:2px solid var(--sand); outline-offset:2px}
+
+.fields{display:grid; gap:14px}
+@media (min-width:640px){ .fields-2{grid-template-columns:1fr 1fr} }
+label.fl{display:block; font-size:13px; font-weight:600; color:var(--muted); margin-bottom:7px}
+.req{color:var(--accent)}
+input[type=text],input[type=tel],input[type=email],select,textarea{
+  width:100%; font:inherit; font-size:15px; color:var(--text);
+  background:var(--bg); border:1px solid var(--line); border-radius:12px;
+  padding:13px 15px; transition:border-color .16s ease, box-shadow .16s ease;
+}
+textarea{resize:vertical; min-height:86px}
+select{
+  appearance:none; cursor:pointer; padding-right:40px;
+  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' fill='none'%3E%3Cpath d='M1 1.5 7 7l6-5.5' stroke='%23A9A192' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position:right 15px center;
+}
+input:focus,select:focus,textarea:focus{
+  outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-glow);
+}
+input::placeholder,textarea::placeholder{color:#6A6459}
+
+.conditional{display:none}
+.conditional.show{display:block}
+
+.consent{
+  display:flex; gap:11px; align-items:flex-start;
+  font-size:12.5px; color:var(--muted-2); line-height:1.5; margin-top:6px;
+}
+.consent input{
+  appearance:none; flex:none; width:19px; height:19px; margin:1px 0 0;
+  border:1px solid var(--line); border-radius:6px; background:var(--bg); cursor:pointer;
+}
+.consent input:checked{
+  background:var(--accent) url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='10' fill='none'%3E%3Cpath d='M1 5l3.4 3.4L11 1.5' stroke='%23131209' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat;
+  border-color:var(--accent);
+}
+.form-error{
+  display:none; margin-top:14px; padding:12px 15px; border-radius:12px; font-size:14px;
+  background:rgba(198,110,86,.12); border:1px solid rgba(198,110,86,.45); color:#E4A992;
+}
+.form-error.show{display:block}
+.hp{position:absolute; left:-9999px; opacity:0; height:0; width:0; overflow:hidden}
+
+.success{
+  display:none; text-align:center; padding:44px 10px;
+}
+.success.show{display:block}
+.success .check{
+  width:60px; height:60px; margin:0 auto 20px; border-radius:50%;
+  display:grid; place-items:center; background:var(--accent-glow); border:1px solid var(--accent);
+  color:var(--accent); font-size:26px;
+}
+.success h3{font-size:1.5rem; margin-bottom:12px}
+.success p{color:var(--muted); max-width:44ch; margin:0 auto 22px}
+
+/* ============================================================
+   CONTACT + FOOTER
+   ============================================================ */
+.contact-grid{display:grid; gap:14px}
+@media (min-width:760px){ .contact-grid{grid-template-columns:repeat(3,1fr)} }
+.contact-card{
+  display:flex; flex-direction:column; gap:6px; text-decoration:none;
+  background:var(--surface); border:1px solid var(--line-soft);
+  border-radius:var(--radius); padding:22px; transition:.18s ease;
+}
+.contact-card:hover{background:var(--surface-2); border-color:var(--line)}
+.contact-card .k{font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted-2)}
+.contact-card .v{font-size:16px; font-weight:600; word-break:break-word}
+
+footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10px}
+.foot{display:flex; flex-wrap:wrap; gap:18px 32px; justify-content:space-between; align-items:flex-start}
+.foot p{font-size:13px; color:var(--muted-2); max-width:56ch}
+.foot strong{color:var(--muted); font-weight:600}
+.legal{margin-top:22px; font-size:11.5px; color:#615B51; line-height:1.65}
+
+/* ============================================================
+   MOBILE STICKY ACTION BAR
+   ============================================================ */
+.dock{
+  position:fixed; left:0; right:0; bottom:0; z-index:70;
+  display:none; gap:8px; padding:9px 12px calc(9px + env(safe-area-inset-bottom));
+  background:rgba(20,19,15,.94);
+  backdrop-filter:saturate(160%) blur(14px);
+  -webkit-backdrop-filter:saturate(160%) blur(14px);
+  border-top:1px solid var(--line);
+}
+.dock .btn{flex:1; padding:13px 10px; font-size:14.5px}
+@media (max-width:760px){
+  .dock{display:flex}
+  body{padding-bottom:84px}
+  .hero{padding:52px 0 48px}
+  .band{padding:52px 0}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none !important}
+}
 </style>
 </head>
 
 <body>
-<div class="wrap">
 
-  <!-- ============================================================
-       3. YOUR HEADLINE
-       Change these three lines to sound like you.
-       ============================================================ -->
-  <p class="eyebrow">Your Name, Realtor</p>
-  <h1>Let's figure out your next move.</h1>
-  <p class="sub">Tell me a little about where you are at. Takes 60 seconds and there is no pressure on the other end of it.</p>
-
-  <!-- ============================================================
-       4. YOUR FORM
-
-       IMPORTANT: replace YOUR_FORM_ID below with your own Formspree
-       ID. It is the part after /f/ in your Formspree endpoint.
-
-       Example: if Formspree gives you
-         https://formspree.io/f/abcd1234
-       then you want
-         action="https://formspree.io/f/abcd1234"
-       ============================================================ -->
-  <form id="leadform" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-
-    <div class="field">
-      <label for="name">Your name</label>
-      <input id="name" name="name" type="text" required>
-    </div>
-
-    <div class="field">
-      <label for="email">Email</label>
-      <input id="email" name="email" type="email" required>
-    </div>
-
-    <div class="field">
-      <label for="phone">Phone</label>
-      <input id="phone" name="phone" type="tel">
-    </div>
-
-    <!-- Change these options to match the kinds of clients you want -->
-    <div class="field">
-      <label for="situation">What is going on?</label>
-      <select id="situation" name="situation">
-        <option>Thinking about selling</option>
-        <option>Looking to buy</option>
-        <option>Selling and buying at the same time</option>
-        <option>Moving to the area</option>
-        <option>Just gathering information</option>
-      </select>
-    </div>
-
-    <div class="field">
-      <label for="timeline">Timeline</label>
-      <select id="timeline" name="timeline">
-        <option>As soon as possible</option>
-        <option>1 to 3 months</option>
-        <option>3 to 6 months</option>
-        <option>Still just looking</option>
-      </select>
-    </div>
-
-    <div class="field">
-      <label for="message">Anything you want me to know</label>
-      <textarea id="message" name="message"></textarea>
-    </div>
-
-    <button type="submit" id="submitbtn">Send it over</button>
-    <p class="fineprint">I read every one of these myself.</p>
-    <p class="err" id="err">Something went wrong. Please try again, or text me instead.</p>
-  </form>
-
-  <!-- Shows after they submit. Change this wording too. -->
-  <div class="done" id="done">
-    <h2>Got it, thank you.</h2>
-    <p>I will be in touch shortly.</p>
+<!-- ══════════════ STICKY HEADER ══════════════ -->
+<header class="header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">
+      <span class="mark">CR</span>
+      <span class="brand-txt">
+        <span class="brand-name">Caleb Rogers</span>
+        <span class="brand-sub">Real Broker, LLC</span>
+      </span>
+    </a>
+    <a class="btn btn-ghost btn-sm" href="tel:+18019102955">801-910-2955</a>
+    <a class="btn btn-primary btn-sm" href="#start">Get Started</a>
   </div>
+</header>
 
-  <!-- ============================================================
-       5. YOUR FOOTER
-       Put your real phone number and license number here.
-       ============================================================ -->
-  <footer>
-    <p>
-      Your Name, Realtor<br>
-      The Perry Group, Real Broker LLC<br>
-      <a href="tel:8015551234">(801) 555-1234</a><br>
-      License #00000000-SA00
+<!-- ══════════════ STICKY TABS ══════════════ -->
+<nav class="tabs" aria-label="Page sections">
+  <div class="tabs-scroll" id="tabs">
+    <a class="tab" href="#top">Overview</a>
+    <a class="tab" href="#why">Why Caleb</a>
+    <a class="tab" href="#how">How It Works</a>
+    <a class="tab" href="#start">Get Your Plan</a>
+    <a class="tab" href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section id="top" class="hero">
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Salt Lake County &amp; Utah County</span>
+    <h1>Your next move, <em>handled properly.</em></h1>
+    <p class="hero-lede">
+      Whether you're buying your first place in Herriman, listing a home in Draper, or
+      picking up a rental in Provo — tell me three quick things and I'll come back with a
+      straight answer on what your move looks like from here.
     </p>
-  </footer>
+    <div class="hero-cta">
+      <a class="btn btn-primary btn-lg" href="#start" data-preset="Buying a home">I'm Buying</a>
+      <a class="btn btn-ghost btn-lg" href="#start" data-preset="Selling a home">I'm Selling</a>
+      <a class="btn btn-ghost btn-lg" href="#start" data-preset="Investing in property">I'm Investing</a>
+    </div>
+    <p class="hero-note">Takes about 30 seconds — mostly taps, barely any typing.</p>
 
+    <div class="trust">
+      <div><span class="dot"></span> Wasatch Front specialist</div>
+      <div><span class="dot"></span> Real Broker, LLC</div>
+      <div><span class="dot"></span> No-pressure, straight answers</div>
+      <div><span class="dot"></span> Same-day response</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ WHY ══════════════ -->
+<section id="why" class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Why Caleb</span>
+      <h2>Fewer surprises, better outcomes.</h2>
+      <p>Real estate gets stressful when you're guessing. My job is to take the guessing out of it — with real numbers, honest timelines, and a plan you actually understand.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>Local, not generic</h3>
+        <p>Salt Lake and Utah County move differently — sometimes street to street. You get pricing and strategy built on what's actually happening in your area right now.</p>
+      </div>
+      <div class="card">
+        <h3>Numbers up front</h3>
+        <p>Net sheets, carrying costs, and realistic offer ranges before you commit to anything. You'll know what a move costs and what it nets you.</p>
+      </div>
+      <div class="card">
+        <h3>Responsive, always</h3>
+        <p>Deals get lost in slow replies. Call, text, or email — you'll hear back the same day, and you'll always know what's next.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ HOW ══════════════ -->
+<section id="how" class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">How It Works</span>
+      <h2>Three steps. No pressure at any of them.</h2>
+    </div>
+    <div class="grid grid-3">
+      <div class="card">
+        <div class="num">1</div>
+        <h3>Tell me the basics</h3>
+        <p>A few taps below — what you're doing, where, and when. That's enough for me to do real homework before we talk.</p>
+      </div>
+      <div class="card">
+        <div class="num">2</div>
+        <h3>Get a custom plan</h3>
+        <p>I'll send back comparable sales, a price range, and the timeline your goal actually requires — not a template.</p>
+      </div>
+      <div class="card">
+        <div class="num">3</div>
+        <h3>Move when you're ready</h3>
+        <p>If the plan works, we run it. If the timing isn't right, I'll tell you that too and check back when it is.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FORM ══════════════ -->
+<section id="start" class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Get Your Plan</span>
+      <h2>Three quick questions.</h2>
+      <p>Tap your answers below. I'll follow up personally — usually within a few hours.</p>
+    </div>
+
+    <div class="form-card">
+      <!-- SUCCESS STATE -->
+      <div class="success" id="success" role="status" aria-live="polite">
+        <div class="check">✓</div>
+        <h3>Got it — thank you!</h3>
+        <p>Your info is on its way to me. I'll review it and reach out shortly with next steps. If you'd rather not wait, call or text anytime.</p>
+        <a class="btn btn-primary" href="tel:+18019102955">Call 801-910-2955</a>
+      </div>
+
+      <!-- FORM -->
+      <form id="leadForm" action="https://formspree.io/f/mjybqkak" method="POST" novalidate>
+
+        <!-- Formspree helpers -->
+        <input type="hidden" name="_subject" value="New lead from CalebRogers landing page">
+        <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <!-- Q1 -->
+        <fieldset>
+          <legend><span class="step">Question 1 of 3</span>What are you looking to do?</legend>
+          <p class="hint">Pick the one that fits best.</p>
+          <div class="pills" id="intentGroup">
+            <label class="pill"><input type="radio" name="I'm looking to" value="Buying a home"><span>Buy a home</span></label>
+            <label class="pill"><input type="radio" name="I'm looking to" value="Selling a home"><span>Sell a home</span></label>
+            <label class="pill"><input type="radio" name="I'm looking to" value="Buying and selling"><span>Buy &amp; sell</span></label>
+            <label class="pill"><input type="radio" name="I'm looking to" value="Investing in property"><span>Invest</span></label>
+            <label class="pill"><input type="radio" name="I'm looking to" value="Relocating to Utah"><span>Relocating to Utah</span></label>
+            <label class="pill"><input type="radio" name="I'm looking to" value="Just want a home value"><span>Just want my home value</span></label>
+          </div>
+        </fieldset>
+
+        <!-- Q2 -->
+        <fieldset>
+          <legend><span class="step">Question 2 of 3</span>What's your timeline?</legend>
+          <p class="hint">An honest guess is fine — it just tells me how fast to move.</p>
+          <div class="pills" id="timeGroup">
+            <label class="pill"><input type="radio" name="Timeline" value="ASAP — ready now"><span>ASAP</span></label>
+            <label class="pill"><input type="radio" name="Timeline" value="1–3 months"><span>1–3 months</span></label>
+            <label class="pill"><input type="radio" name="Timeline" value="3–6 months"><span>3–6 months</span></label>
+            <label class="pill"><input type="radio" name="Timeline" value="6–12 months"><span>6–12 months</span></label>
+            <label class="pill"><input type="radio" name="Timeline" value="Just researching"><span>Just researching</span></label>
+          </div>
+        </fieldset>
+
+        <!-- Q3 -->
+        <fieldset>
+          <legend><span class="step">Question 3 of 3</span>Which area?</legend>
+          <p class="hint">Where the move is happening.</p>
+          <div class="pills" id="areaGroup">
+            <label class="pill"><input type="radio" name="Area" value="Salt Lake County"><span>Salt Lake County</span></label>
+            <label class="pill"><input type="radio" name="Area" value="Utah County"><span>Utah County</span></label>
+            <label class="pill"><input type="radio" name="Area" value="Both / either"><span>Both</span></label>
+            <label class="pill"><input type="radio" name="Area" value="Somewhere else in Utah"><span>Elsewhere in Utah</span></label>
+            <label class="pill"><input type="radio" name="Area" value="Not sure yet"><span>Not sure yet</span></label>
+          </div>
+        </fieldset>
+
+        <!-- BUYER FOLLOW-UPS -->
+        <div class="conditional" id="buyBlock">
+          <fieldset>
+            <legend>Price range you're shopping</legend>
+            <p class="hint">Ballpark is fine.</p>
+            <div class="pills">
+              <label class="pill"><input type="radio" name="Price range" value="Under $400K"><span>Under $400K</span></label>
+              <label class="pill"><input type="radio" name="Price range" value="$400K–$600K"><span>$400K–$600K</span></label>
+              <label class="pill"><input type="radio" name="Price range" value="$600K–$800K"><span>$600K–$800K</span></label>
+              <label class="pill"><input type="radio" name="Price range" value="$800K–$1.2M"><span>$800K–$1.2M</span></label>
+              <label class="pill"><input type="radio" name="Price range" value="$1.2M+"><span>$1.2M+</span></label>
+              <label class="pill"><input type="radio" name="Price range" value="Still figuring it out"><span>Still figuring it out</span></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Financing status</legend>
+            <div class="pills">
+              <label class="pill"><input type="radio" name="Financing" value="Pre-approved"><span>Pre-approved</span></label>
+              <label class="pill"><input type="radio" name="Financing" value="Not yet — need a lender"><span>Need a lender</span></label>
+              <label class="pill"><input type="radio" name="Financing" value="Paying cash"><span>Paying cash</span></label>
+              <label class="pill"><input type="radio" name="Financing" value="Selling first, then buying"><span>Selling first</span></label>
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- SELLER FOLLOW-UPS -->
+        <div class="conditional" id="sellBlock">
+          <fieldset>
+            <legend>About the property</legend>
+            <p class="hint">The address helps me pull real comps — a cross-street works too.</p>
+            <div class="fields fields-2">
+              <div>
+                <label class="fl" for="addr">Property address or area</label>
+                <input type="text" id="addr" name="Property address" placeholder="e.g. 1200 E Sandy, UT" autocomplete="street-address">
+              </div>
+              <div>
+                <label class="fl" for="ptype">Property type</label>
+                <select id="ptype" name="Property type">
+                  <option value="">Select one…</option>
+                  <option>Single-family home</option>
+                  <option>Townhome</option>
+                  <option>Condo</option>
+                  <option>Multi-family / investment</option>
+                  <option>Land</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- CONTACT -->
+        <fieldset>
+          <legend>Where should I send it?</legend>
+          <p class="hint">Only used to get back to you about your move.</p>
+          <div class="fields fields-2">
+            <div>
+              <label class="fl" for="name">Name <span class="req">*</span></label>
+              <input type="text" id="name" name="Name" placeholder="First and last" autocomplete="name" required>
+            </div>
+            <div>
+              <label class="fl" for="phone">Phone <span class="req">*</span></label>
+              <input type="tel" id="phone" name="Phone" placeholder="(801) 555-0142" autocomplete="tel" required>
+            </div>
+          </div>
+          <div class="fields" style="margin-top:14px">
+            <div>
+              <label class="fl" for="email">Email <span class="req">*</span></label>
+              <input type="email" id="email" name="Email" placeholder="you@email.com" autocomplete="email" required>
+            </div>
+            <div>
+              <label class="fl" for="notes">Anything else I should know? <span style="color:var(--muted-2);font-weight:400">(optional)</span></label>
+              <textarea id="notes" name="Notes" placeholder="School boundaries, must-have garage, HOA questions, a deadline I should know about…"></textarea>
+            </div>
+            <div>
+              <label class="fl" for="contactpref">Best way to reach you</label>
+              <select id="contactpref" name="Preferred contact">
+                <option>Text</option>
+                <option>Call</option>
+                <option>Email</option>
+                <option>Any of these</option>
+              </select>
+            </div>
+          </div>
+
+          <label class="consent">
+            <input type="checkbox" name="Consent to contact" value="Yes — agreed to be contacted" required>
+            <span>I agree to be contacted by Caleb Rogers about my real estate needs by call, text, or email. Message and data rates may apply. Reply STOP to opt out at any time.</span>
+          </label>
+        </fieldset>
+
+        <button class="btn btn-primary btn-lg btn-block" type="submit" id="submitBtn">Send My Info</button>
+        <div class="form-error" id="formError" role="alert"></div>
+        <p class="hint" style="text-align:center;margin:14px 0 0">
+          Prefer to skip the form? Call or text <a href="tel:+18019102955" style="color:var(--sand)">801-910-2955</a>.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CONTACT ══════════════ -->
+<section id="contact" class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Contact</span>
+      <h2>Reach me directly.</h2>
+    </div>
+    <div class="contact-grid">
+      <a class="contact-card" href="tel:+18019102955">
+        <span class="k">Call</span>
+        <span class="v">801-910-2955</span>
+      </a>
+      <a class="contact-card" href="sms:+18019102955">
+        <span class="k">Text</span>
+        <span class="v">801-910-2955</span>
+      </a>
+      <a class="contact-card" href="mailto:Caleb.Rogers@theperry.group">
+        <span class="k">Email</span>
+        <span class="v">Caleb.Rogers@theperry.group</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="wrap foot">
+    <div>
+      <p><strong>Caleb Rogers</strong> · Real Estate Agent<br>
+      Real Broker, LLC · Utah License #13650647-SA</p>
+      <p class="legal">
+        Each office is independently owned and operated. All information is deemed reliable but
+        not guaranteed and should be independently verified. Equal Housing Opportunity.
+        This is not intended to solicit properties already listed with another brokerage.
+        © <span id="yr">2026</span> Caleb Rogers. All rights reserved.
+      </p>
+    </div>
+    <div>
+      <a class="btn btn-primary" href="#start">Get Your Plan</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════ MOBILE DOCK ══════════════ -->
+<div class="dock">
+  <a class="btn btn-ghost" href="tel:+18019102955">Call</a>
+  <a class="btn btn-ghost" href="sms:+18019102955">Text</a>
+  <a class="btn btn-primary" href="#start">Get Started</a>
 </div>
 
 <script>
-/* ==============================================================
-   6. FORM HANDLING
-   This keeps people on your page after they submit instead of
-   sending them to a Formspree page. You do not need to change it.
-   ============================================================== */
-var form = document.getElementById('leadform');
-var btn  = document.getElementById('submitbtn');
-var done = document.getElementById('done');
-var err  = document.getElementById('err');
+(function(){
+  "use strict";
 
-form.addEventListener('submit', function (e) {
-  e.preventDefault();
-  err.style.display = 'none';
-  btn.disabled = true;
-  btn.textContent = 'Sending...';
+  document.getElementById('yr').textContent = new Date().getFullYear();
 
-  fetch(form.action, {
-    method: 'POST',
-    body: new FormData(form),
-    headers: { 'Accept': 'application/json' }
-  })
-  .then(function (res) {
-    if (res.ok) {
-      form.style.display = 'none';
-      done.style.display = 'block';
-    } else {
-      throw new Error('bad response');
-    }
-  })
-  .catch(function () {
-    err.style.display = 'block';
-    btn.disabled = false;
-    btn.textContent = 'Send it over';
+  /* ---------- Hero buttons preselect the first question ---------- */
+  document.querySelectorAll('[data-preset]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var val = btn.getAttribute('data-preset');
+      var input = document.querySelector('#intentGroup input[value="' + val + '"]');
+      if (input) { input.checked = true; input.dispatchEvent(new Event('change', {bubbles:true})); }
+    });
   });
-});
+
+  /* ---------- Show buyer / seller follow-ups ---------- */
+  var buyBlock  = document.getElementById('buyBlock');
+  var sellBlock = document.getElementById('sellBlock');
+  var BUY  = ['Buying a home','Buying and selling','Investing in property','Relocating to Utah'];
+  var SELL = ['Selling a home','Buying and selling','Just want a home value'];
+
+  document.querySelectorAll('#intentGroup input').forEach(function(r){
+    r.addEventListener('change', function(){
+      buyBlock.classList.toggle('show',  BUY.indexOf(r.value)  > -1);
+      sellBlock.classList.toggle('show', SELL.indexOf(r.value) > -1);
+    });
+  });
+
+  /* ---------- Sticky tab scroll-spy ---------- */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('#tabs .tab'));
+  var sections = tabs.map(function(t){ return document.querySelector(t.getAttribute('href')); });
+
+  var headerEl = document.querySelector('.header');
+  var tabsEl   = document.querySelector('.tabs');
+
+  function spy(){
+    var stickyH = headerEl.offsetHeight + tabsEl.offsetHeight + 24;
+    var line = window.scrollY + stickyH, current = 0;
+    sections.forEach(function(sec, i){
+      if (sec && sec.offsetTop <= line) current = i;
+    });
+    tabs.forEach(function(t, i){ t.classList.toggle('active', i === current); });
+  }
+  window.addEventListener('scroll', spy, {passive:true});
+  window.addEventListener('resize', spy);
+  spy();
+
+  /* ---------- Form validation + AJAX submit ---------- */
+  var form    = document.getElementById('leadForm');
+  var errBox  = document.getElementById('formError');
+  var okBox   = document.getElementById('success');
+  var btn     = document.getElementById('submitBtn');
+
+  function fail(msg, el){
+    errBox.textContent = msg;
+    errBox.classList.add('show');
+    if (el) {
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+      if (el.focus) { try { el.focus({preventScroll:true}); } catch(e){ el.focus(); } }
+    }
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    errBox.classList.remove('show');
+
+    var checks = [
+      ['intentGroup', 'Pick what you\'re looking to do.'],
+      ['timeGroup',   'Let me know your timeline.'],
+      ['areaGroup',   'Choose the area you\'re focused on.']
+    ];
+    for (var i = 0; i < checks.length; i++){
+      var group = document.getElementById(checks[i][0]);
+      if (!group.querySelector('input:checked')) { return fail(checks[i][1], group); }
+    }
+
+    var required = [['name','Please add your name.'],
+                    ['phone','Please add a phone number.'],
+                    ['email','Please add an email address.']];
+    for (var j = 0; j < required.length; j++){
+      var f = document.getElementById(required[j][0]);
+      if (!f.value.trim()) { return fail(required[j][1], f); }
+    }
+
+    var email = document.getElementById('email');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim())){
+      return fail('That email address looks off — mind double-checking it?', email);
+    }
+    var consent = form.querySelector('.consent input');
+    if (!consent.checked){
+      return fail('Please check the box so I know it\'s okay to reach out.', consent);
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: {'Accept': 'application/json'}
+    }).then(function(res){
+      if (res.ok){
+        form.style.display = 'none';
+        okBox.classList.add('show');
+        okBox.scrollIntoView({behavior:'smooth', block:'center'});
+      } else {
+        return res.json().then(function(d){
+          throw new Error(d && d.errors ? d.errors.map(function(x){return x.message;}).join(', ') : 'Submit failed');
+        });
+      }
+    }).catch(function(){
+      btn.disabled = false;
+      btn.textContent = 'Send My Info';
+      fail('Something went wrong sending that. Please try again, or call/text 801-910-2955.');
+    });
+  });
+})();
 </script>
+
 </body>
 </html>
