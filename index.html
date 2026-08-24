@@ -257,7 +257,7 @@ input::placeholder,textarea::placeholder{color:#6A6459}
   background:rgba(198,110,86,.12); border:1px solid rgba(198,110,86,.45); color:#E4A992;
 }
 .form-error.show{display:block}
-.hp{position:absolute; left:-9999px; opacity:0; height:0; width:0; overflow:hidden}
+.hp{display:none !important}
 
 .success{
   display:none; text-align:center; padding:44px 10px;
@@ -556,7 +556,7 @@ footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10
           <div class="fields" style="margin-top:14px">
             <div>
               <label class="fl" for="email">Email <span class="req">*</span></label>
-              <input type="email" id="email" name="Email" placeholder="you@email.com" autocomplete="email" required>
+              <input type="email" id="email" name="email" placeholder="you@email.com" autocomplete="email" required>
             </div>
             <div>
               <label class="fl" for="notes">Anything else I should know? <span style="color:var(--muted-2);font-weight:400">(optional)</span></label>
