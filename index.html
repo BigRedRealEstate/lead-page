@@ -190,7 +190,6 @@ p{margin:0}
 .btn-lg{padding:16px 30px; font-size:16.5px}
 .btn-block{width:100%}
 .header .btn{flex:none}
-@media (max-width:640px){ .header .btn-ghost{display:none} }
 
 /* ============================================================
    STICKY SECTION TABS
@@ -411,7 +410,11 @@ input::placeholder,textarea::placeholder{color:var(--placeholder)}
 }
 .contact-card:hover{background:var(--surface-2); border-color:var(--line)}
 .contact-card .k{font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted-2)}
-.contact-card .v{font-size:16px; font-weight:600; word-break:break-word}
+.contact-card .v{
+  font-weight:600; white-space:nowrap;      /* never split the address */
+  font-size:clamp(13.5px,1.32vw,16px);      /* shrink to fit instead */
+  letter-spacing:-.012em;
+}
 
 footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10px}
 .foot{display:flex; flex-wrap:wrap; gap:18px 32px; justify-content:space-between; align-items:flex-start}
@@ -606,7 +609,6 @@ footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10
         <span class="brand-sub">Real Broker, LLC</span>
       </span>
     </a>
-    <a class="btn btn-ghost btn-sm" href="tel:+18019102955">801-910-2955</a>
     <a class="btn btn-primary btn-sm" href="#start">Work With Me</a>
   </div>
 </header>
@@ -716,9 +718,9 @@ footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10
   <div class="wrap">
     <div class="stats-grid reveal">
       <div class="stat">
-        <b>2</b>
-        <span>Counties covered</span>
-        <i>Salt Lake &amp; Utah County</i>
+        <b>50+</b>
+        <span>Clients helped</span>
+        <i>Bought or sold in the last two years</i>
       </div>
       <div class="stat word">
         <b>Same day</b>
@@ -945,12 +947,13 @@ footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10
     <p>Skip the form entirely. Call or text and you'll get a person, not a queue.</p>
     <div class="contact-grid reveal">
       <a class="contact-card" href="tel:+18019102955">
-        <span class="k">Call</span>
+        <span class="k">Call or text</span>
         <span class="v">801-910-2955</span>
       </a>
-      <a class="contact-card" href="sms:+18019102955">
-        <span class="k">Text</span>
-        <span class="v">801-910-2955</span>
+      <a class="contact-card" href="https://www.instagram.com/big_red_realtor/"
+         target="_blank" rel="noopener noreferrer">
+        <span class="k">Instagram</span>
+        <span class="v">@big_red_realtor</span>
       </a>
       <a class="contact-card" href="mailto:Caleb.Rogers@theperry.group">
         <span class="k">Email</span>
