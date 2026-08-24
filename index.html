@@ -484,6 +484,47 @@ footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10
 .feature-copy p + p{margin-top:14px}
 .feature-copy .btn{margin-top:28px}
 
+
+/* ============================================================
+   PROCESS RAIL — the "how it works" timeline. Intentionally a
+   different form from the numbered bands: connected dots, no
+   oversized numerals, lighter weight before the questionnaire.
+   ============================================================ */
+.process{border-top:1px solid var(--line-soft); padding:clamp(56px,7vw,94px) 0}
+.rail{list-style:none; margin:0; padding:0; display:grid; gap:8px}
+@media (min-width:860px){ .rail{grid-template-columns:repeat(3,1fr); gap:44px} }
+
+.rail-step{position:relative}
+.rail-step::before{                       /* the dot */
+  content:''; position:absolute; width:12px; height:12px; border-radius:50%;
+  background:var(--accent); box-shadow:0 0 0 5px var(--accent-glow); z-index:1;
+}
+.rail-step::after{ content:''; position:absolute; background:var(--line); }
+.rail-step h3{font-size:1.16rem; margin:0 0 10px}
+.rail-step p{color:var(--muted); font-size:15px; max-width:40ch}
+.rail-when{
+  display:block; margin-bottom:10px;
+  font-size:11.5px; font-weight:700; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--accent-txt);
+}
+
+/* desktop: horizontal rail */
+@media (min-width:860px){
+  .rail-step{padding-top:36px}
+  .rail-step::before{left:0; top:0}
+  .rail-step::after{left:12px; top:5px; right:-44px; height:1px}
+  .rail-step:last-child::after{display:none}
+}
+/* mobile: vertical rail */
+@media (max-width:859px){
+  .rail-step{padding-left:32px; padding-bottom:30px}
+  .rail-step::before{left:0; top:4px}
+  .rail-step::after{left:5px; top:20px; bottom:2px; width:1px}
+  .rail-step:last-child{padding-bottom:0}
+  .rail-step:last-child::after{display:none}
+}
+.rail-cta{margin-top:clamp(34px,5vw,52px)}
+
 /* ---- stat band ---- */
 .stats{border-top:1px solid var(--line-soft); background:var(--surface); padding:clamp(50px,7vw,86px) 0}
 .stats-grid{display:grid; gap:36px; text-align:center}
@@ -607,7 +648,7 @@ footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10
 
 <section class="feature flip">
   <div class="feature-inner">
-    <div class="feature-panel">
+    <div class="feature-panel has-photo p-pool">
       <span class="feature-num">02</span>
       <span class="feature-tag">Numbers up front</span>
     </div>
@@ -622,7 +663,7 @@ footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10
 
 <section class="feature">
   <div class="feature-inner">
-    <div class="feature-panel has-photo p-pool">
+    <div class="feature-panel has-photo p-hearth">
       <span class="feature-num">03</span>
       <span class="feature-tag">Responsive, always</span>
     </div>
@@ -662,46 +703,39 @@ footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10
   </div>
 </section>
 
-<!-- ══════════════ HOW — alternating full-bleed bands ══════════════ -->
-<section id="how" class="feature flip">
-  <div class="feature-inner">
-    <div class="feature-panel">
-      <span class="feature-num">01</span>
-      <span class="feature-tag">Step one</span>
-    </div>
-    <div class="feature-copy reveal">
+<!-- ══════════════ HOW IT WORKS — process rail ══════════════
+     Deliberately a different shape from the numbered bands above:
+     a connected timeline instead of full-bleed panels, so the page
+     doesn't repeat 01/02/03 twice.
+     ══════════════════════════════════════════════════════ -->
+<section id="how" class="process">
+  <div class="wrap">
+    <div class="sec-head reveal">
       <span class="eyebrow">How it works</span>
-      <h2>Tell me <em>the basics.</em></h2>
-      <p>Three taps below — what you're doing, where, and when. That's genuinely enough for me to do real homework before we ever talk, so the first conversation isn't spent gathering information you already gave me.</p>
+      <h2>Three steps. No pressure at any of them.</h2>
+      <p>Start to finish, this is the whole process. Nothing happens that you didn't ask for.</p>
     </div>
-  </div>
-</section>
 
-<section class="feature">
-  <div class="feature-inner">
-    <div class="feature-panel has-photo p-hearth">
-      <span class="feature-num">02</span>
-      <span class="feature-tag">Step two</span>
-    </div>
-    <div class="feature-copy reveal">
-      <span class="eyebrow">How it works</span>
-      <h2>Get a plan built on <em>real comps.</em></h2>
-      <p>Comparable sales from your actual neighborhood, a price range with reasoning attached, and the timeline your goal really requires. Written down, so you can sit with it instead of trying to remember what somebody told you on a call.</p>
-    </div>
-  </div>
-</section>
+    <ol class="rail reveal">
+      <li class="rail-step">
+        <span class="rail-when">First</span>
+        <h3>Tell me the basics</h3>
+        <p>Three taps below — what you're doing, where, and when. That's enough for me to do real homework before we ever talk, so the first conversation isn't spent gathering what you already gave me.</p>
+      </li>
+      <li class="rail-step">
+        <span class="rail-when">Then</span>
+        <h3>Get a plan built on real comps</h3>
+        <p>Comparable sales from your actual neighborhood, a price range with reasoning attached, and the timeline your goal really requires — written down, so you can sit with it.</p>
+      </li>
+      <li class="rail-step">
+        <span class="rail-when">When you're ready</span>
+        <h3>Move, or don't</h3>
+        <p>If the plan works, we run it. If the timing isn't right, I'll say so and check back when it is — no chasing, no drip campaign you have to unsubscribe from.</p>
+      </li>
+    </ol>
 
-<section class="feature flip">
-  <div class="feature-inner">
-    <div class="feature-panel">
-      <span class="feature-num">03</span>
-      <span class="feature-tag">Step three</span>
-    </div>
-    <div class="feature-copy reveal">
-      <span class="eyebrow">How it works</span>
-      <h2>Move when <em>you're ready.</em></h2>
-      <p>If the plan works, we run it. If the timing isn't right, I'll say so and check back when it is — no chasing, no drip campaign you have to unsubscribe from.</p>
-      <a class="btn btn-primary" href="#start">Answer the three questions</a>
+    <div class="rail-cta reveal">
+      <a class="btn btn-primary btn-lg" href="#start">Answer the three questions</a>
     </div>
   </div>
 </section>
