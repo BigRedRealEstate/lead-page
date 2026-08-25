@@ -348,6 +348,8 @@ legend{padding:0; font-size:15.5px; font-weight:600; margin-bottom:4px}
 @media (min-width:640px){ .fields-2{grid-template-columns:1fr 1fr} }
 label.fl{display:block; font-size:13px; font-weight:600; color:var(--muted); margin-bottom:7px}
 .req{color:var(--accent-txt)}
+.opt{font-weight:400; color:var(--muted-2); text-transform:none; letter-spacing:0}
+
 input[type=text],input[type=tel],input[type=email],select,textarea{
   width:100%; font:inherit; font-size:15px; color:var(--text);
   background:var(--input-bg); border:1px solid var(--line); border-radius:12px;
@@ -589,6 +591,53 @@ footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10
   transition:opacity .75s ease, transform .75s cubic-bezier(.22,.8,.3,1)}
 .reveal.in{opacity:1; transform:none}
 
+
+/* ============================================================
+   TYPOGRAPHY: flush line endings, no orphans
+   - justify makes every full line end at the same right edge
+   - hyphens:auto lets long words break so justification doesn't
+     open up rivers of white space
+   - text-wrap:pretty stops a last line from ending on one or two
+     stranded words (it pulls a word down from the line above)
+   - text-wrap:balance evens out multi-line headings
+   ============================================================ */
+.hero-lede,
+.sec-head p,
+.feature-copy p,
+.rail-step p,
+.closing > .wrap > p,
+.card p{
+  -webkit-hyphens:auto; hyphens:auto;
+  text-wrap:pretty;
+}
+/* Justify only where the column is wide enough to do it cleanly.
+   Below ~640px a line holds so few words that justifying tears
+   gaps between them ("rivers"), which looks worse than a ragged
+   right edge. Orphan protection still applies at every width. */
+@media (min-width:640px){
+  .hero-lede,
+  .sec-head p,
+  .feature-copy p,
+  .rail-step p,
+  .closing > .wrap > p,
+  .card p{
+    text-align:justify;
+    text-justify:inter-word;
+  }
+}
+/* short supporting lines: no justify (too few words per line to
+   justify cleanly) but still protected from orphans */
+.hint, .hero-note, .stat i, .foot p, .legal, .feature-tag, .rail-when{
+  text-wrap:pretty;
+}
+h1, h2, h3, legend{
+  text-wrap:balance;
+}
+/* centred blocks justify poorly on very narrow screens */
+@media (max-width:520px){
+  .closing > .wrap > p{text-align:center}
+}
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *{transition:none !important}
@@ -632,11 +681,7 @@ footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10
       <div class="hero-copy">
         <span class="eyebrow">Salt Lake County &amp; Utah County</span>
         <h1>Your next move, <em>handled properly.</em></h1>
-        <p class="hero-lede">
-          Whether you're buying your first place in Herriman, listing a home in Draper, or
-          picking up a rental in Provo, tell me three quick things and I'll come back with a
-          straight answer on what your move looks like from here.
-        </p>
+        <p class="hero-lede">Whether you're buying your first place in Herriman, listing a home in Draper, or picking up a rental in Provo, tell me three quick things and I'll come back with a straight answer on what your move looks like&nbsp;from&nbsp;here.</p>
         <div class="hero-cta">
           <a class="btn btn-primary btn-lg" href="#start" data-preset="Buying a home">I'm Buying</a>
           <a class="btn btn-ghost btn-lg" href="#start" data-preset="Selling a home">I'm Selling</a>
@@ -673,8 +718,8 @@ footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10
     <div class="feature-copy reveal">
       <span class="eyebrow">Why Caleb</span>
       <h2>Two counties that <em>don't move the same.</em></h2>
-      <p>Salt Lake and Utah County behave like different markets, and inside each one it can change street to street. What sells in eleven days in Sugar House can sit for two months in Eagle Mountain at the same price per foot.</p>
-      <p>You get pricing and strategy built on what's happening in your area right now, not a statewide average that describes nobody's house.</p>
+      <p>Salt Lake and Utah County behave like different markets, and inside each one it can change street to street. What sells in eleven days in Sugar House can sit for two months in Eagle Mountain at the same price&nbsp;per&nbsp;foot.</p>
+      <p>You get pricing and strategy built on what's happening in your area right now, not a statewide average that describes&nbsp;nobody's&nbsp;house.</p>
     </div>
   </div>
 </section>
@@ -688,8 +733,8 @@ footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10
     <div class="feature-copy reveal">
       <span class="eyebrow">What you get</span>
       <h2>See the math <em>before</em> you commit.</h2>
-      <p>Net sheets, carrying costs, and realistic offer ranges come before any decision, not after it. You'll know what a move costs you and what it actually puts back in your pocket.</p>
-      <p>If the numbers say wait, I'll show you the numbers that say wait.</p>
+      <p>Net sheets, carrying costs, and realistic offer ranges come before any decision, not after it. You'll know what a move costs you and what it actually puts back in&nbsp;your&nbsp;pocket.</p>
+      <p>If the numbers say wait, I'll show you the numbers that&nbsp;say&nbsp;wait.</p>
     </div>
   </div>
 </section>
@@ -703,7 +748,7 @@ footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10
     <div class="feature-copy reveal">
       <span class="eyebrow">How I work</span>
       <h2>Deals die in <em>slow replies.</em></h2>
-      <p>An offer window can close in an afternoon. Call, text, or email and you hear back the same day. You'll always know what happens next and who's waiting on whom.</p>
+      <p>An offer window can close in an afternoon. Call, text, or email and you hear back the same day. You'll always know what happens next and who's waiting&nbsp;on&nbsp;whom.</p>
       <a class="btn btn-primary" href="#start">Get your strategy</a>
     </div>
   </div>
@@ -746,24 +791,24 @@ footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10
     <div class="sec-head reveal">
       <span class="eyebrow">How it works</span>
       <h2>Three steps. No pressure at any of them.</h2>
-      <p>Start to finish, this is the whole process. Nothing happens that you didn't ask for.</p>
+      <p>Start to finish, this is the whole process. Nothing happens that you didn't&nbsp;ask&nbsp;for.</p>
     </div>
 
     <ol class="rail reveal">
       <li class="rail-step">
         <span class="rail-when">First</span>
         <h3>Tell me the basics</h3>
-        <p>Three taps below: what you're doing, where, and when. That's enough for me to do real homework before we ever talk, so the first conversation isn't spent gathering what you already gave me.</p>
+        <p>Three taps below: what you're doing, where, and when. That's enough for me to do real homework before we ever talk, so the first conversation isn't spent gathering what you already&nbsp;gave&nbsp;me.</p>
       </li>
       <li class="rail-step">
         <span class="rail-when">Then</span>
         <h3>Get a plan built on real comps</h3>
-        <p>Comparable sales from your actual neighborhood, a price range with reasoning attached, and the timeline your goal really requires. All written down, so you can sit with it.</p>
+        <p>Comparable sales from your actual neighborhood, a price range with reasoning attached, and the timeline your goal really requires. All written down, so you can sit&nbsp;with&nbsp;it.</p>
       </li>
       <li class="rail-step">
         <span class="rail-when">When you're ready</span>
         <h3>Move, or don't</h3>
-        <p>If the plan works, we run it. If the timing isn't right, I'll say so and check back when it is. No chasing, no drip campaign you have to unsubscribe from.</p>
+        <p>If the plan works, we run it. If the timing isn't right, I'll say so and check back when it is. No chasing, no drip campaign you have to&nbsp;unsubscribe&nbsp;from.</p>
       </li>
     </ol>
 
@@ -779,7 +824,7 @@ footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10
     <div class="sec-head">
       <span class="eyebrow">Get Your Strategy</span>
       <h2>Three quick questions.</h2>
-      <p>Tap your answers below. I'll follow up personally, usually within a few hours.</p>
+      <p>Tap your answers below. I'll follow up personally, usually within a&nbsp;few&nbsp;hours.</p>
     </div>
 
     <div class="form-card">
@@ -787,7 +832,7 @@ footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10
       <div class="success" id="success" role="status" aria-live="polite">
         <div class="check">✓</div>
         <h3>Got it. Thank you!</h3>
-        <p>Your info is on its way to me. I'll review it and reach out shortly with next steps. If you'd rather not wait, call or text anytime.</p>
+        <p>Your info is on its way to me. I'll review it and reach out shortly with next steps. If you'd rather not wait, call or&nbsp;text&nbsp;anytime.</p>
         <a class="btn btn-primary" href="tel:+18019102955">Call 801-910-2955</a>
       </div>
 
@@ -867,11 +912,68 @@ footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10
         <div class="conditional" id="sellBlock">
           <fieldset>
             <legend>About the property</legend>
-            <p class="hint">The address helps me pull real comps. A cross-street works too.</p>
-            <div class="fields fields-2">
+            <p class="hint">All optional. The address helps me pull real comps, but a cross-street or just the city works too.</p>
+            <div class="fields">
               <div>
-                <label class="fl" for="addr">Property address or area</label>
-                <input type="text" id="addr" name="Property address" placeholder="e.g. 1200 E Sandy, UT" autocomplete="street-address">
+                <label class="fl" for="addr">Property address or area <span class="opt">optional</span></label>
+                <input type="text" id="addr" name="Property address" placeholder="Start typing your address"
+                       autocomplete="street-address" autocapitalize="words" spellcheck="false">
+              </div>
+            </div>
+            <div class="fields fields-2" style="margin-top:14px">
+              <div>
+                <label class="fl" for="city">City <span class="opt">optional</span></label>
+                <input type="text" id="city" name="City" list="ut-cities" placeholder="Pick or type"
+                       autocomplete="address-level2" autocapitalize="words">
+                <datalist id="ut-cities">
+            <option value="Salt Lake City">
+            <option value="West Valley City">
+            <option value="West Jordan">
+            <option value="Sandy">
+            <option value="South Jordan">
+            <option value="Taylorsville">
+            <option value="Murray">
+            <option value="Draper">
+            <option value="Riverton">
+            <option value="Cottonwood Heights">
+            <option value="Holladay">
+            <option value="Herriman">
+            <option value="Midvale">
+            <option value="Millcreek">
+            <option value="South Salt Lake">
+            <option value="Bluffdale">
+            <option value="Magna">
+            <option value="Kearns">
+            <option value="White City">
+            <option value="Copperton">
+            <option value="Emigration Canyon">
+            <option value="Alta">
+            <option value="Brighton">
+            <option value="Provo">
+            <option value="Orem">
+            <option value="Lehi">
+            <option value="American Fork">
+            <option value="Pleasant Grove">
+            <option value="Spanish Fork">
+            <option value="Springville">
+            <option value="Payson">
+            <option value="Saratoga Springs">
+            <option value="Eagle Mountain">
+            <option value="Vineyard">
+            <option value="Highland">
+            <option value="Alpine">
+            <option value="Cedar Hills">
+            <option value="Lindon">
+            <option value="Mapleton">
+            <option value="Salem">
+            <option value="Santaquin">
+            <option value="Elk Ridge">
+            <option value="Genola">
+            <option value="Woodland Hills">
+            <option value="Cedar Fort">
+            <option value="Fairfield">
+            <option value="Goshen">
+                </datalist>
               </div>
               <div>
                 <label class="fl" for="ptype">Property type</label>
@@ -909,7 +1011,7 @@ footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10
               <input type="email" id="email" name="email" placeholder="you@email.com" autocomplete="email" required>
             </div>
             <div>
-              <label class="fl" for="notes">Anything else I should know? <span style="color:var(--muted-2);font-weight:400">(optional)</span></label>
+              <label class="fl" for="notes">Anything else I should know? <span class="opt">optional</span></label>
               <textarea id="notes" name="Notes" placeholder="School boundaries, must-have garage, HOA questions, a deadline I should know about…"></textarea>
             </div>
             <div>
@@ -944,7 +1046,7 @@ footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10
   <div class="wrap">
     <span class="eyebrow">Contact</span>
     <h2>Rather just <em>talk it through?</em></h2>
-    <p>Skip the form entirely. Call or text and you'll get a person, not a queue.</p>
+    <p>Skip the form entirely. Call or text and you'll get a person, not&nbsp;a&nbsp;queue.</p>
     <div class="contact-grid reveal">
       <a class="contact-card" href="tel:+18019102955">
         <span class="k">Call or text</span>
