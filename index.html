@@ -610,21 +610,6 @@ footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10
   -webkit-hyphens:auto; hyphens:auto;
   text-wrap:pretty;
 }
-/* Justify only where the column is wide enough to do it cleanly.
-   Below ~640px a line holds so few words that justifying tears
-   gaps between them ("rivers"), which looks worse than a ragged
-   right edge. Orphan protection still applies at every width. */
-@media (min-width:640px){
-  .hero-lede,
-  .sec-head p,
-  .feature-copy p,
-  .rail-step p,
-  .closing > .wrap > p,
-  .card p{
-    text-align:justify;
-    text-justify:inter-word;
-  }
-}
 /* short supporting lines: no justify (too few words per line to
    justify cleanly) but still protected from orphans */
 .hint, .hero-note, .stat i, .foot p, .legal, .feature-tag, .rail-when{
