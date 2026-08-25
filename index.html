@@ -607,8 +607,20 @@ footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10
 .rail-step p,
 .closing > .wrap > p,
 .card p{
+  /* hyphens:auto covers browsers that ship a dictionary; the soft
+     hyphens baked into the copy cover the ones that don't, so lines
+     always have somewhere to break and justification stays tight */
   -webkit-hyphens:auto; hyphens:auto;
   text-wrap:pretty;
+}
+/* Justify only the WIDE columns. The timeline steps sit in narrow
+   three-up columns (~300px, 5-6 words a line) where justifying tears
+   gaps between words, so those stay ragged on purpose. */
+@media (min-width:560px){
+  .hero-lede, .sec-head p, .feature-copy p, .closing > .wrap > p{
+    text-align:justify;
+    text-justify:inter-word;
+  }
 }
 /* short supporting lines: no justify (too few words per line to
    justify cleanly) but still protected from orphans */
@@ -666,7 +678,7 @@ h1, h2, h3, legend{
       <div class="hero-copy">
         <span class="eyebrow">Salt Lake County &amp; Utah County</span>
         <h1>Your next move, <em>handled properly.</em></h1>
-        <p class="hero-lede">Whether you're buying your first place in Herriman, listing a home in Draper, or picking up a rental in Provo, tell me three quick things and I'll come back with a straight answer on what your move looks like&nbsp;from&nbsp;here.</p>
+        <p class="hero-lede">Whether you're buying your first place in Herriman, listing a home in Draper, or picking up a rental in Provo, tell me three quick things and I'll come back with a straight answer on what your move looks like from here.</p>
         <div class="hero-cta">
           <a class="btn btn-primary btn-lg" href="#start" data-preset="Buying a home">I'm Buying</a>
           <a class="btn btn-ghost btn-lg" href="#start" data-preset="Selling a home">I'm Selling</a>
@@ -703,8 +715,8 @@ h1, h2, h3, legend{
     <div class="feature-copy reveal">
       <span class="eyebrow">Why Caleb</span>
       <h2>Two counties that <em>don't move the same.</em></h2>
-      <p>Salt Lake and Utah County behave like different markets, and inside each one it can change street to street. What sells in eleven days in Sugar House can sit for two months in Eagle Mountain at the same price&nbsp;per&nbsp;foot.</p>
-      <p>You get pricing and strategy built on what's happening in your area right now, not a statewide average that describes&nbsp;nobody's&nbsp;house.</p>
+      <p>Salt Lake and Utah County behave like dif­ferent markets, and inside each one it can change street to street. What sells in eleven days in Sugar House can sit for two months in Eagle Mountain at the same price per foot.</p>
+      <p>You get pricing and strategy built on what's hap­pen­ing in your area right now, not a statewide average that describes nobody's house.</p>
     </div>
   </div>
 </section>
@@ -718,8 +730,8 @@ h1, h2, h3, legend{
     <div class="feature-copy reveal">
       <span class="eyebrow">What you get</span>
       <h2>See the math <em>before</em> you commit.</h2>
-      <p>Net sheets, carrying costs, and realistic offer ranges come before any decision, not after it. You'll know what a move costs you and what it actually puts back in&nbsp;your&nbsp;pocket.</p>
-      <p>If the numbers say wait, I'll show you the numbers that&nbsp;say&nbsp;wait.</p>
+      <p>Net sheets, car­ry­ing costs, and realis­tic offer ranges come before any de­ci­sion, not after it. You'll know what a move costs you and what it actu­ally puts back in your pocket.</p>
+      <p>If the numbers say wait, I'll show you the numbers that say wait.</p>
     </div>
   </div>
 </section>
@@ -733,7 +745,7 @@ h1, h2, h3, legend{
     <div class="feature-copy reveal">
       <span class="eyebrow">How I work</span>
       <h2>Deals die in <em>slow replies.</em></h2>
-      <p>An offer window can close in an afternoon. Call, text, or email and you hear back the same day. You'll always know what happens next and who's waiting&nbsp;on&nbsp;whom.</p>
+      <p>An offer window can close in an after­noon. Call, text, or email and you hear back the same day. You'll always know what happens next and who's waiting on whom.</p>
       <a class="btn btn-primary" href="#start">Get your strategy</a>
     </div>
   </div>
@@ -776,24 +788,24 @@ h1, h2, h3, legend{
     <div class="sec-head reveal">
       <span class="eyebrow">How it works</span>
       <h2>Three steps. No pressure at any of them.</h2>
-      <p>Start to finish, this is the whole process. Nothing happens that you didn't&nbsp;ask&nbsp;for.</p>
+      <p>Start to finish, this is the whole process. Nothing happens that you didn't ask for.</p>
     </div>
 
     <ol class="rail reveal">
       <li class="rail-step">
         <span class="rail-when">First</span>
         <h3>Tell me the basics</h3>
-        <p>Three taps below: what you're doing, where, and when. That's enough for me to do real homework before we ever talk, so the first conversation isn't spent gathering what you already&nbsp;gave&nbsp;me.</p>
+        <p>Three taps below: what you're doing, where, and when. That's enough for me to do real homework before we ever talk, so the first con­ver­sation isn't spent gather­ing what you already gave me.</p>
       </li>
       <li class="rail-step">
         <span class="rail-when">Then</span>
         <h3>Get a plan built on real comps</h3>
-        <p>Comparable sales from your actual neighborhood, a price range with reasoning attached, and the timeline your goal really requires. All written down, so you can sit&nbsp;with&nbsp;it.</p>
+        <p>Com­par­able sales from your actual neighborhood, a price range with reason­ing attached, and the timeline your goal really requires. All written down, so you can sit with it.</p>
       </li>
       <li class="rail-step">
         <span class="rail-when">When you're ready</span>
         <h3>Move, or don't</h3>
-        <p>If the plan works, we run it. If the timing isn't right, I'll say so and check back when it is. No chasing, no drip campaign you have to&nbsp;unsubscribe&nbsp;from.</p>
+        <p>If the plan works, we run it. If the timing isn't right, I'll say so and check back when it is. No chasing, no drip cam­paign you have to unsubscribe from.</p>
       </li>
     </ol>
 
@@ -809,7 +821,7 @@ h1, h2, h3, legend{
     <div class="sec-head">
       <span class="eyebrow">Get Your Strategy</span>
       <h2>Three quick questions.</h2>
-      <p>Tap your answers below. I'll follow up personally, usually within a&nbsp;few&nbsp;hours.</p>
+      <p>Tap your answers below. I'll follow up per­son­ally, usually within a few hours.</p>
     </div>
 
     <div class="form-card">
@@ -817,7 +829,7 @@ h1, h2, h3, legend{
       <div class="success" id="success" role="status" aria-live="polite">
         <div class="check">✓</div>
         <h3>Got it. Thank you!</h3>
-        <p>Your info is on its way to me. I'll review it and reach out shortly with next steps. If you'd rather not wait, call or&nbsp;text&nbsp;anytime.</p>
+        <p>Your info is on its way to me. I'll review it and reach out shortly with next steps. If you'd rather not wait, call or text anytime.</p>
         <a class="btn btn-primary" href="tel:+18019102955">Call 801-910-2955</a>
       </div>
 
@@ -1031,7 +1043,7 @@ h1, h2, h3, legend{
   <div class="wrap">
     <span class="eyebrow">Contact</span>
     <h2>Rather just <em>talk it through?</em></h2>
-    <p>Skip the form entirely. Call or text and you'll get a person, not&nbsp;a&nbsp;queue.</p>
+    <p>Skip the form entirely. Call or text and you'll get a person, not a queue.</p>
     <div class="contact-grid reveal">
       <a class="contact-card" href="tel:+18019102955">
         <span class="k">Call or text</span>
