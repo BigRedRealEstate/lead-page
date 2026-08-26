@@ -664,20 +664,13 @@ h1, h2, h3, legend{
 .about{background:var(--surface); border-top:1px solid var(--line-soft);
        padding:clamp(56px,7vw,96px) 0}
 .about-grid{display:grid; gap:clamp(34px,4vw,56px)}
-@media (min-width:900px){ .about-grid{grid-template-columns:1.25fr .75fr; align-items:start} }
-.about-copy h2{font-size:clamp(1.7rem,4vw,2.5rem); margin:14px 0 0; max-width:20ch}
-.about-copy h2 em{font-style:normal; color:var(--sand)}
-.about-copy p{margin-top:18px; color:var(--muted); font-size:clamp(1rem,2vw,1.07rem); max-width:56ch}
-
-.facts{border:1px solid var(--line); border-radius:var(--radius-lg);
-       background:var(--bg); padding:clamp(20px,2.4vw,26px)}
-.facts dl{margin:0}
-.facts div{display:grid; gap:3px; padding:13px 0; border-bottom:1px solid var(--line-soft)}
-.facts div:last-child{border-bottom:0; padding-bottom:0}
-.facts div:first-child{padding-top:0}
-.facts dt{font-size:11px; font-weight:700; letter-spacing:.14em;
-          text-transform:uppercase; color:var(--muted-2)}
-.facts dd{margin:0; font-size:15px; font-weight:550; color:var(--text)}
+@media (min-width:900px){
+  .about-grid{grid-template-columns:1fr 1.25fr; align-items:start; gap:clamp(40px,5vw,66px)}
+}
+.about-head h2{font-size:clamp(1.6rem,3.3vw,2.15rem); margin:14px 0 0; max-width:17ch}
+.about-head h2 em{font-style:normal; color:var(--sand)}
+.about-copy p{margin:0 0 18px; color:var(--muted); font-size:clamp(1rem,2vw,1.07rem)}
+.about-copy p:last-child{margin-bottom:0}
 
 /* four stat tiles now that there are real production numbers */
 @media (min-width:760px){ .stats-grid{grid-template-columns:repeat(2,1fr)} }
@@ -711,10 +704,10 @@ h1, h2, h3, legend{
 <nav class="tabs" aria-label="Page sections">
   <div class="tabs-scroll" id="tabs">
     <a class="tab" href="#top">Overview</a>
-    <a class="tab" href="#about">Meet Caleb</a>
     <a class="tab" href="#why">Why Me</a>
     <a class="tab" href="#how">How It Works</a>
     <a class="tab" href="#start">Get Your Strategy</a>
+    <a class="tab" href="#about">Meet Caleb</a>
     <a class="tab" href="#contact">Contact</a>
   </div>
 </nav>
@@ -751,34 +744,6 @@ h1, h2, h3, legend{
       <div><span class="dot"></span> No-pressure, straight answers</div>
       <div><span class="dot"></span> Same-day response</div>
     </div>
-  </div>
-</section>
-
-<!-- ══════════════ MEET CALEB ══════════════ -->
-<section id="about" class="about">
-  <div class="wrap about-grid">
-    <div class="about-copy reveal">
-      <span class="eyebrow">Meet Caleb</span>
-      <h2>I started in this business <em>sweeping out houses.</em></h2>
-      <p>I was born and raised in Riverton and graduated from Riverton High. Apart from three years down in St. George, I have lived in Riverton, Herriman, or Lehi my whole life. My wife and I are raising our son and daughter here. When I am not working I am outside, usually fishing.</p>
-      <p>My first job in this industry was rough clean for a local home builder back in 2016. I was not selling anyth­ing. I was sweep­ing sawdust out of houses that were still going up. But I walked through hundreds of them mid build, and I got hooked on how a house actu­ally goes together.</p>
-      <p>I got licen­sed after my son was born and went to work for a builder in southern Utah. I closed $18 million in volume in my first ten months and $26 million the year after that.</p>
-      <p>Since then I have worked inside four dif­ferent buil­ders. I know how they price, where they have room, and what they will give up to keep a deal together. That is how I get buyers a lower purchase price and more con­ces­sions than they would land on their own. Listing homes is my specialty, but the builder side is the edge I bring to every buyer I work with.</p>
-      <p>Before any of that I went through the avia­tion program at UVU in Orem. I am a licen­sed com­mer­cial pilot and a cer­tified flight instruc­tor, and part of that train­ing is lear­ning to recover an airplane from a stall spin. Real estate gets tense sometimes. It has never once gotten as tense as that.</p>
-    </div>
-
-    <aside class="facts reveal">
-      <dl>
-        <div><dt>Hometown</dt><dd>Riverton, Utah</dd></div>
-        <div><dt>Grew up</dt><dd>Riverton, Herriman, Lehi</dd></div>
-        <div><dt>Family</dt><dd>Wife, one son, one daughter</dd></div>
-        <div><dt>Outside of work</dt><dd>Fishing and anything outdoors</dd></div>
-        <div><dt>Started in homes</dt><dd>2016, cleaning new construction</dd></div>
-        <div><dt>Also studied</dt><dd>Aviation at UVU in Orem</dd></div>
-        <div><dt>Also licensed as</dt><dd>Commercial pilot, flight instructor</dd></div>
-        <div><dt>Best known for</dt><dd>Listings, and new construction deals</dd></div>
-      </dl>
-    </aside>
   </div>
 </section>
 
@@ -1123,6 +1088,23 @@ h1, h2, h3, legend{
         </p>
       </form>
     </div>
+  </div>
+</section>
+
+<!-- ══════════════ MEET CALEB ══════════════ -->
+<section id="about" class="about">
+  <div class="wrap about-grid">
+    <div class="about-head reveal">
+      <span class="eyebrow">Meet Caleb</span>
+      <h2>I started in this business <em>sweeping out houses.</em></h2>
+    </div>
+
+    <div class="about-copy reveal">
+      <p>I was born and raised in Riverton and graduated from Riverton High. Apart from three years in St. George, I have lived in Riverton, Herriman, or Lehi my whole life. My wife and I are raising our son and daughter here, and when I am not working I am outside, usually fishing.</p>
+      <p>My first job in this industry was rough clean for a home builder in 2016. I was sweep­ing sawdust out of houses that were still going up, and I got hooked on how a house actu­ally goes together. I got licen­sed after my son was born, went to work for a builder in southern Utah, and closed $18 million in volume in my first ten months and $26 million the year after.</p>
+      <p>Since then I have worked inside four dif­ferent buil­ders, so I know how they price, where they have room, and what they will give up to keep a deal together. Before any of it I went through the avia­tion program at UVU. I am a com­mer­cial pilot and flight instruc­tor, trained to recover an airplane from a stall spin. Real estate gets tense sometimes. It has never once gotten as tense as that.</p>
+    </div>
+
   </div>
 </section>
 
