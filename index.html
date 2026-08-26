@@ -169,11 +169,22 @@ p{margin:0}
 }
 .brand-txt{min-width:0}
 .brand-name{font-weight:650; font-size:15px; letter-spacing:-.02em; white-space:nowrap}
-.brand-sub{font-size:11.5px; color:var(--muted-2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+/* Utah Admin. Code R162-2f-401h requires the brokerage name to appear
+   clearly and conspicuously in advertising, so this is deliberately
+   readable rather than fine print. */
+.brand-sub{font-size:12.5px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
 
 /* ============================================================
    BUTTONS
    ============================================================ */
+/* Phone in the header as plain text, not a second pill. Keeps one visual
+   CTA while still showing the number without making anyone fill a form. */
+.header-tel{
+  text-decoration:none; font-size:14.5px; font-weight:600; letter-spacing:-.01em;
+  color:var(--muted); white-space:nowrap; transition:color .18s ease;
+}
+.header-tel:hover{color:var(--text)}
+@media (max-width:720px){ .header-tel{display:none} }
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:8px;
   font:inherit; font-weight:600; font-size:15px; letter-spacing:-.01em;
@@ -603,6 +614,7 @@ footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10
    ============================================================ */
 .hero-lede,
 .sec-head p,
+.about-copy p,
 .feature-copy p,
 .rail-step p,
 .closing > .wrap > p,
@@ -617,7 +629,7 @@ footer{border-top:1px solid var(--line-soft); padding:38px 0 34px; margin-top:10
    three-up columns (~300px, 5-6 words a line) where justifying tears
    gaps between words, so those stay ragged on purpose. */
 @media (min-width:560px){
-  .hero-lede, .sec-head p, .feature-copy p, .closing > .wrap > p{
+  .hero-lede, .sec-head p, .about-copy p, .feature-copy p, .closing > .wrap > p{
     text-align:justify;
     text-justify:inter-word;
   }
@@ -635,6 +647,41 @@ h1, h2, h3, legend{
   .closing > .wrap > p{text-align:center}
 }
 
+
+/* Equal Housing Opportunity mark. HUD's 24 CFR 109 was rescinded so this
+   isn't a federal mandate for an agent's own site, but it is near-universal
+   industry practice and many brokerages/MLSs require it. */
+.eho{display:flex; align-items:center; gap:9px; margin-top:16px}
+.eho svg{width:26px; height:26px; flex:none; fill:none;
+  stroke:var(--muted-2); stroke-width:6; stroke-linejoin:round}
+.eho span{font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted-2)}
+
+/* ============================================================
+   MEET CALEB - the story section. Two columns: the narrative on
+   one side, a compact fact card on the other. Deliberately a
+   different shape again from the numbered bands and the rail.
+   ============================================================ */
+.about{background:var(--surface); border-top:1px solid var(--line-soft);
+       padding:clamp(56px,7vw,96px) 0}
+.about-grid{display:grid; gap:clamp(34px,4vw,56px)}
+@media (min-width:900px){ .about-grid{grid-template-columns:1.25fr .75fr; align-items:start} }
+.about-copy h2{font-size:clamp(1.7rem,4vw,2.5rem); margin:14px 0 0; max-width:20ch}
+.about-copy h2 em{font-style:normal; color:var(--sand)}
+.about-copy p{margin-top:18px; color:var(--muted); font-size:clamp(1rem,2vw,1.07rem); max-width:56ch}
+
+.facts{border:1px solid var(--line); border-radius:var(--radius-lg);
+       background:var(--bg); padding:clamp(20px,2.4vw,26px)}
+.facts dl{margin:0}
+.facts div{display:grid; gap:3px; padding:13px 0; border-bottom:1px solid var(--line-soft)}
+.facts div:last-child{border-bottom:0; padding-bottom:0}
+.facts div:first-child{padding-top:0}
+.facts dt{font-size:11px; font-weight:700; letter-spacing:.14em;
+          text-transform:uppercase; color:var(--muted-2)}
+.facts dd{margin:0; font-size:15px; font-weight:550; color:var(--text)}
+
+/* four stat tiles now that there are real production numbers */
+@media (min-width:760px){ .stats-grid{grid-template-columns:repeat(2,1fr)} }
+@media (min-width:1040px){ .stats-grid{grid-template-columns:repeat(4,1fr)} }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *{transition:none !important}
@@ -655,6 +702,7 @@ h1, h2, h3, legend{
         <span class="brand-sub">Real Broker, LLC</span>
       </span>
     </a>
+    <a class="header-tel" href="tel:+18019102955">801-910-2955</a>
     <a class="btn btn-primary btn-sm" href="#start">Work With Me</a>
   </div>
 </header>
@@ -663,7 +711,8 @@ h1, h2, h3, legend{
 <nav class="tabs" aria-label="Page sections">
   <div class="tabs-scroll" id="tabs">
     <a class="tab" href="#top">Overview</a>
-    <a class="tab" href="#why">Why Caleb</a>
+    <a class="tab" href="#about">Meet Caleb</a>
+    <a class="tab" href="#why">Why Me</a>
     <a class="tab" href="#how">How It Works</a>
     <a class="tab" href="#start">Get Your Strategy</a>
     <a class="tab" href="#contact">Contact</a>
@@ -702,6 +751,34 @@ h1, h2, h3, legend{
       <div><span class="dot"></span> No-pressure, straight answers</div>
       <div><span class="dot"></span> Same-day response</div>
     </div>
+  </div>
+</section>
+
+<!-- ══════════════ MEET CALEB ══════════════ -->
+<section id="about" class="about">
+  <div class="wrap about-grid">
+    <div class="about-copy reveal">
+      <span class="eyebrow">Meet Caleb</span>
+      <h2>I started in this business <em>sweeping out houses.</em></h2>
+      <p>I was born and raised in Riverton and graduated from Riverton High. Apart from three years down in St. George, I have lived in Riverton, Herriman, or Lehi my whole life. My wife and I are raising our son and daughter here. When I am not working I am outside, usually fishing.</p>
+      <p>My first job in this industry was rough clean for a local home builder back in 2016. I was not selling anyth­ing. I was sweep­ing sawdust out of houses that were still going up. But I walked through hundreds of them mid build, and I got hooked on how a house actu­ally goes together.</p>
+      <p>I got licen­sed after my son was born and went to work for a builder in southern Utah. I closed $18 million in volume in my first ten months and $26 million the year after that.</p>
+      <p>Since then I have worked inside four dif­ferent buil­ders. I know how they price, where they have room, and what they will give up to keep a deal together. That is how I get buyers a lower purchase price and more con­ces­sions than they would land on their own. Listing homes is my specialty, but the builder side is the edge I bring to every buyer I work with.</p>
+      <p>Before any of that I went through the avia­tion program at UVU in Orem. I am a licen­sed com­mer­cial pilot and a cer­tified flight instruc­tor, and part of that train­ing is lear­ning to recover an airplane from a stall spin. Real estate gets tense sometimes. It has never once gotten as tense as that.</p>
+    </div>
+
+    <aside class="facts reveal">
+      <dl>
+        <div><dt>Hometown</dt><dd>Riverton, Utah</dd></div>
+        <div><dt>Grew up</dt><dd>Riverton, Herriman, Lehi</dd></div>
+        <div><dt>Family</dt><dd>Wife, one son, one daughter</dd></div>
+        <div><dt>Outside of work</dt><dd>Fishing and anything outdoors</dd></div>
+        <div><dt>Started in homes</dt><dd>2016, cleaning new construction</dd></div>
+        <div><dt>Also studied</dt><dd>Aviation at UVU in Orem</dd></div>
+        <div><dt>Also licensed as</dt><dd>Commercial pilot, flight instructor</dd></div>
+        <div><dt>Best known for</dt><dd>Listings, and new construction deals</dd></div>
+      </dl>
+    </aside>
   </div>
 </section>
 
@@ -759,20 +836,25 @@ h1, h2, h3, legend{
 <section class="stats">
   <div class="wrap">
     <div class="stats-grid reveal">
+      <div class="stat word">
+        <b>$44M+</b>
+        <span>Closed volume</span>
+        <i>First two years licensed</i>
+      </div>
       <div class="stat">
         <b>50+</b>
         <span>Clients helped</span>
         <i>Bought or sold in the last two years</i>
       </div>
+      <div class="stat">
+        <b>4</b>
+        <span>Builders worked inside</span>
+        <i>Leverage on new construction</i>
+      </div>
       <div class="stat word">
         <b>Same day</b>
         <span>Typical reply</span>
         <i>Call, text, or email</i>
-      </div>
-      <div class="stat">
-        <b>0</b>
-        <span>Pressure</span>
-        <i>Straight answers, every time</i>
       </div>
     </div>
   </div>
@@ -838,6 +920,12 @@ h1, h2, h3, legend{
 
         <!-- Formspree helpers -->
         <input type="hidden" name="_subject" value="New lead from CalebRogers landing page">
+        <!-- Consent evidence: what was shown, whether they agreed, when, and from where.
+             This is what protects you if a TCPA claim is ever raised. -->
+        <input type="hidden" name="Consent given"     id="hConsent" value="No">
+        <input type="hidden" name="Consent text shown" id="hConsentText" value="">
+        <input type="hidden" name="Submitted at"      id="hWhen" value="">
+        <input type="hidden" name="Submitted from"    id="hWhere" value="">
         <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
 
         <!-- Q1 -->
@@ -1023,8 +1111,8 @@ h1, h2, h3, legend{
           </div>
 
           <label class="consent">
-            <input type="checkbox" name="Consent to contact" value="Yes, agreed to be contacted" required>
-            <span>I agree to be contacted by Caleb Rogers about my real estate needs by call, text, or email. Message and data rates may apply. Reply STOP to opt out at any time.</span>
+            <input type="checkbox" id="consent" name="Consent to contact" value="Yes, agreed to be contacted">
+            <span id="consentText">I agree that Caleb Rogers of Real Broker, LLC may contact me about my real estate needs by call, text, or email, including with automated or prerecorded messages. Consent is not required to get a reply. Message and data rates may apply. Reply STOP to opt out at any time.</span>
           </label>
         </fieldset>
 
@@ -1074,6 +1162,13 @@ h1, h2, h3, legend{
         This is not intended to solicit properties already listed with another brokerage.
         © <span id="yr">2026</span> Caleb Rogers. All rights reserved.
       </p>
+      <div class="eho">
+        <svg viewBox="0 0 100 100" role="img" aria-label="Equal Housing Opportunity">
+          <path d="M50 14 6 46h13v40h62V46h13z"/>
+          <path d="M34 86V60h32v26"/>
+        </svg>
+        <span>Equal Housing Opportunity</span>
+      </div>
     </div>
     <div>
       <a class="btn btn-primary" href="#start">Get Your Strategy</a>
@@ -1191,10 +1286,13 @@ h1, h2, h3, legend{
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim())){
       return fail('That email address looks off. Mind double-checking it?', email);
     }
-    var consent = form.querySelector('.consent input');
-    if (!consent.checked){
-      return fail('Please check the box so I know it\'s okay to reach out.', consent);
-    }
+    // Consent is optional by design: it must not be a condition of getting a
+    // reply. We simply record what the visitor chose, verbatim, with a timestamp.
+    var consentBox = document.getElementById('consent');
+    document.getElementById('hConsent').value     = consentBox.checked ? 'Yes' : 'No';
+    document.getElementById('hConsentText').value = document.getElementById('consentText').textContent.trim();
+    document.getElementById('hWhen').value        = new Date().toString();
+    document.getElementById('hWhere').value       = window.location.href;
 
     btn.disabled = true;
     btn.textContent = 'Sending…';
